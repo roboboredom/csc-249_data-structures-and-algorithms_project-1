@@ -1,3 +1,4 @@
 {
-    "css.format.braceStyle": "expand"
+    "css.format.braceStyle": "expand",
+    "java.format.settings.url": ".vscode/java-formatter.xml"
 }
