@@ -21,7 +21,7 @@ public class Playlist
      */
     private Song m_head; // Reference to dummy Song object at the head of the list.
     private Song m_tail; // Reference to dummy Song object at the tail of the list.
-    private int m_int; // Number of non-null references to non-dummy Song objects in the list.
+    private int m_size; // Number of non-null references to non-dummy Song objects in the list.
 
     /*
      * Declare methods
@@ -41,7 +41,7 @@ public class Playlist
         nodeToInsertNewNodeBefore.setPreviousSong(s);
 
         // Increment number of non-null references to non-dummy Song objects in the list by 1.
-        m_int++;
+        m_size++;
     }
 
     // Accepts 2 Song object references. Inserts the 1st (parameter "s") after the position of the 2nd (parameter "currentlyPlayingSong").
@@ -60,13 +60,43 @@ public class Playlist
         nodeToInsertNewNodeBefore.setPreviousSong(s);
 
         // Increment number of non-null references to non-dummy Song objects in the list by 1.
-        m_int++;
+        m_size++;
     }
 
-    // TODO: Implement Playlist.deleteSong(Song s) method.
-    public void deleteSong(Song s) // Accepts a Song object reference and deletes any nodes that match it's data.
+    public void deleteSong(Song s) // Accepts a Song object reference and deletes any nodes that match it's name field.
     {
+        // Start at node after head dummy node.
+        Song currentNode = m_head.getNextSong();
 
+        /* 
+         * Traverse through all non-dummy non-null nodes, deleting any matches.
+         * If the next node after the current node is null, stop (as it means the current node is the tail dummy node).
+         */
+        while(currentNode.getNextSong() != null)
+        {
+            // Check for matching name field.
+            if (currentNode.getName() == s.getName()) 
+            {
+                // Save next node temporarily...
+                Song nextNodeToCheck = currentNode.getNextSong();
+                
+                // Link nodes surrounding currentNode together...
+                currentNode.getNextSong().setPreviousSong(currentNode.getPreviousSong());
+                currentNode.getPreviousSong().setNextSong(currentNode.getNextSong());
+
+                // Unlink the Song object currentNode points to from the list entirely. The garbage collector will automatically delete it.
+                currentNode.setNextSong(null);
+                currentNode.setPreviousSong(null);
+
+                // ...change current node to temporarily saved next node
+                currentNode = nextNodeToCheck;
+            }
+            else 
+            {
+                // Change current node to next node.
+                currentNode = currentNode.getNextSong();
+            }
+        }
     }
 
     // TODO: Implement Playlist.toString() method.
@@ -93,6 +123,6 @@ public class Playlist
         m_tail.setPreviousSong(m_head);
 
         // Intialize to zero as there are no non-null references to non-dummy Song objects in the list yet.
-        m_int = 0;
+        m_size = 0;
     }
 }
