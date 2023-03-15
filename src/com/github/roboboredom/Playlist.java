@@ -135,6 +135,21 @@ public class Playlist
         return playlistInfo;
     }
 
+    public int getSize() // Get the current number of non-null references to non-dummy Song objects in the list.
+    {
+        return m_size;
+    }
+
+    public Song getHeadNode()
+    {
+        return m_head;
+    }
+
+    public Song getTailNode()
+    {
+        return m_tail;
+    }
+
     /* 
      * Declare constructors: 
      */
