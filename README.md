@@ -2,9 +2,9 @@
 "Programming Project 1" assignment for "CSC-249 Data Structures and Algorithms" at Central Piedmont Community College, 2023.
 
 ### To build & run:
-Clone this repository to your desktop.  
-Open it with VSCode with the "Extension Pack for Java" extension installed.  
-Run from main in "Demo.java".
+1. Clone this repository to your desktop.  
+2. Open it with VSCode with the "Extension Pack for Java" extension installed.  
+3. Run from main in "Demo.java".
 
 ### License
 This project is licensed under the GNU Affero General Public License v3.0. 
