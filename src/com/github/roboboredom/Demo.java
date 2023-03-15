@@ -39,9 +39,9 @@ public class Demo
             System.out.println("\t7. Return to the previous song.");
             System.out.println("\t8. Exit program.");
 
-            userInput = scanner.next();
+            userInput = scanner.nextLine();
 
-            if (userInput == "1")
+            if (userInput.equals("1"))
             {
                 Song newSong = new Song();
 
@@ -57,7 +57,7 @@ public class Demo
                     currentSong = newSong;
                 }
             }
-            else if (userInput == "2")
+            else if (userInput.equals("2"))
             {
                 if (currentSong != null)
                 {
@@ -80,7 +80,7 @@ public class Demo
                     System.out.println("There is no currently playing song.");
                 }
             }
-            else if (userInput == "3")
+            else if (userInput.equals("3"))
             {
                 if (playlist.getSize() != 0)
                 {
@@ -91,7 +91,7 @@ public class Demo
                     System.out.println("Playlist is currently empty. Please add song(s) first.");
                 }
             }
-            else if (userInput == "4")
+            else if (userInput.equals("4"))
             {
                 if (currentSong != null)
                 {
@@ -106,7 +106,7 @@ public class Demo
                     System.out.println("There is no currently playing song.");
                 }
             }
-            else if (userInput == "5")
+            else if (userInput.equals("5"))
             {
                 if (currentSong != null)
                 {
@@ -141,7 +141,7 @@ public class Demo
                     System.out.println("There is no currently playing song.");
                 }
             }
-            else if (userInput == "6")
+            else if (userInput.equals("6"))
             {
                 if (currentSong != null)
                 {
@@ -166,7 +166,7 @@ public class Demo
                     System.out.println("There is no currently playing song.");
                 }
             }
-            else if (userInput == "7")
+            else if (userInput.equals("7"))
             {
                 if (currentSong != null)
                 {
@@ -191,7 +191,7 @@ public class Demo
                     System.out.println("There is no currently playing song.");
                 }
             }
-            else if (userInput == "8")
+            else if (userInput.equals("8"))
             {
                 System.out.println("Exiting program...");
                 doLoop = false;

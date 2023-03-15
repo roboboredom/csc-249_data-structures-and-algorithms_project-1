@@ -74,7 +74,7 @@ public class Playlist
         while(currentNode.getNextSong() != null)
         {
             // Check for matching name field.
-            if (currentNode.getName() == s.getName()) 
+            if (currentNode.getName().equals(s.getName())) 
             {
                 // Save next node temporarily...
                 Song nextNodeToCheck = currentNode.getNextSong();
