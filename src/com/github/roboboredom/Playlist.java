@@ -65,13 +65,12 @@ public class Playlist
 
     public void deleteSong(Song s) // Accepts a Song object reference and deletes any nodes that match it's name field.
     {
-        // Start at node after head dummy node.
-        Song currentNode = m_head.getNextSong();
-
         /* 
          * Traverse through all non-dummy non-null nodes, deleting any matches.
          * If the next node after the current node is null, stop (as it means the current node is the tail dummy node).
          */
+        Song currentNode = m_head.getNextSong(); // Start at node after head dummy node.
+        
         while(currentNode.getNextSong() != null)
         {
             // Check for matching name field.
@@ -88,6 +87,9 @@ public class Playlist
                 currentNode.setNextSong(null);
                 currentNode.setPreviousSong(null);
 
+                // Decrement number of non-null references to non-dummy Song objects in the list by 1.
+                m_size--;
+
                 // ...change current node to temporarily saved next node
                 currentNode = nextNodeToCheck;
             }
@@ -99,10 +101,36 @@ public class Playlist
         }
     }
 
-    // TODO: Implement Playlist.toString() method.
-    public String toString() // Return a string describing the contents of the playlist, the number of songs, and the total length in minutes and seconds.
+    public String toString() // Return a string containing playlist info: the contents of the playlist, the number of songs, and the total length in minutes and seconds.
     {
-        String playlistInfo = "";
+        String playlistInfo = "Current Playlist Data:\nSongs:\n";
+
+        int totalPlaylistTime = 0; // Total length of the playlist in seconds.
+
+        /* 
+         * Traverse through all non-dummy non-null nodes, gathering song data.
+         * If the next node after the current node is null, stop (as it means the current node is the tail dummy node).
+         */
+        Song currentNode = m_head.getNextSong(); // Start at node after head dummy node.
+
+        while(currentNode.getNextSong() != null)
+        {
+            playlistInfo += "\tSong Name: " + currentNode.getName() + "\n";
+            playlistInfo += "\tSong Artist: " + currentNode.getArtist() + "\n";
+            playlistInfo += "\tSong Album: " + currentNode.getAlbum() + "\n";
+            playlistInfo += "\tSong Length (seconds): " + currentNode.getLength() + "\n\n";
+            
+            // Add song length to running total.
+            totalPlaylistTime += currentNode.getLength();
+
+            // Change current node to next node.
+            currentNode = currentNode.getNextSong();
+        }
+
+        playlistInfo += "Total Playlist Length (minutes): " + totalPlaylistTime + "\n";
+        playlistInfo += "Total Playlist Length (seconds): " + totalPlaylistTime / 60 + "\n\n";
+        
+        playlistInfo += "Total Number of Songs: " + m_size + "\n\n";
 
         return playlistInfo;
     }
