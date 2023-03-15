@@ -51,14 +51,14 @@ public class Song
         m_length = length;
     }
     
-    public void setNextSong(Song next) // Set a reference to the next Song object in the list, or null if there is none.
+    public void setNextSong(Song s) // Set a reference to the next Song object in the list, or null if there is none.
     {
-        m_next = next;
+        m_next = s;
     }
 
-    public void setPreviousSong(Song previous) // Set a reference to the previous Song object in the list, or null if there is none.
+    public void setPreviousSong(Song s) // Set a reference to the previous Song object in the list, or null if there is none.
     {
-        m_previous = previous;
+        m_previous = s;
     }
 
     /* 
@@ -95,8 +95,8 @@ public class Song
     }
 
     /* 
-    * Declare constructors: 
-    */
+     * Declare constructors: 
+     */
     public Song() // No-arg constructor.
     {
         // Intialize private variables to default/placeholder values.
@@ -106,7 +106,7 @@ public class Song
 
         m_length = 0;
 
-        // Set next and previous node references to null. This node is not in a list yet.
+        // Intialize next and previous node references to null. This node is not in a list yet.
         m_next = null;
         m_previous = null;
     }
@@ -119,7 +119,7 @@ public class Song
 
         m_length = length;
 
-        // Set next and previous node references to null. This node is not in a list yet.
+        // Intialize next and previous node references to null. This node is not in a list yet.
         m_next = null;
         m_previous = null;
     }

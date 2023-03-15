@@ -13,5 +13,86 @@ package com.github.roboboredom;
 
 public class Playlist
 {
+    /*
+     * Declare private variables:
+     * 
+     * The "m_" prefix denotes a variable as class member, 
+     * avoiding name collsion with variables outside the class. 
+     */
+    private Song m_head; // Reference to dummy Song object at the head of the list.
+    private Song m_tail; // Reference to dummy Song object at the tail of the list.
+    private int m_int; // Number of non-null references to non-dummy Song objects in the list.
 
+    /*
+     * Declare methods
+     */
+    public void appendSong(Song s) // Accepts a Song object reference and inserts it before the tail dummy node.
+    {   
+        // Get the nodes that will be before and after the new node once it is inserted.
+        Song nodeToInsertNewNodeAfter = m_tail.getPreviousSong();
+        Song nodeToInsertNewNodeBefore = m_tail;
+
+        // Link the pointers of the new node to its surrounding nodes.
+        s.setNextSong(nodeToInsertNewNodeBefore);
+        s.setPreviousSong(nodeToInsertNewNodeAfter);
+
+        // Link the pointers of the nodes surrounding the new node to it.
+        nodeToInsertNewNodeAfter.setNextSong(s);
+        nodeToInsertNewNodeBefore.setPreviousSong(s);
+
+        // Increment number of non-null references to non-dummy Song objects in the list by 1.
+        m_int++;
+    }
+
+    // Accepts 2 Song object references. Inserts the 1st (parameter "s") after the position of the 2nd (parameter "currentlyPlayingSong").
+    public void insertSongAfterCurrentlyPlayingSong(Song s, Song currentlyPlayingSong)
+    {
+        // Get the 2 nodes that will surround the new node after it's insertion between them.
+        Song nodeToInsertNewNodeAfter = currentlyPlayingSong;
+        Song nodeToInsertNewNodeBefore = currentlyPlayingSong.getNextSong();
+
+        // Link the pointers of the new node to its surrounding nodes.
+        s.setNextSong(nodeToInsertNewNodeBefore);
+        s.setPreviousSong(nodeToInsertNewNodeAfter);
+
+        // Link the pointers of the nodes surrounding the new node to it.
+        nodeToInsertNewNodeAfter.setNextSong(s);
+        nodeToInsertNewNodeBefore.setPreviousSong(s);
+
+        // Increment number of non-null references to non-dummy Song objects in the list by 1.
+        m_int++;
+    }
+
+    // TODO: Implement Playlist.deleteSong(Song s) method.
+    public void deleteSong(Song s) // Accepts a Song object reference and deletes any nodes that match it's data.
+    {
+
+    }
+
+    // TODO: Implement Playlist.toString() method.
+    public String toString() // Return a string describing the contents of the playlist, the number of songs, and the total length in minutes and seconds.
+    {
+        String playlistInfo = "";
+
+        return playlistInfo;
+    }
+
+    /* 
+     * Declare constructors: 
+     */
+    public Playlist() // No-arg constructor.
+    {
+        // Instantiate new Song object to function as the head dummy node.
+        m_head = new Song();
+
+        // Instantiate new Song object to function as the tail dummy node.
+        m_tail = new Song();
+
+        // Link the head and tail dummy nodes.
+        m_head.setNextSong(m_tail);
+        m_tail.setPreviousSong(m_head);
+
+        // Intialize to zero as there are no non-null references to non-dummy Song objects in the list yet.
+        m_int = 0;
+    }
 }
