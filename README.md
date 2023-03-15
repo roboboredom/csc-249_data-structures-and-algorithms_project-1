@@ -6,5 +6,6 @@ Clone this repository to your desktop.
 Open it with VSCode with the "Extension Pack for Java" extension installed.
 Run from main in "Demo.java".
 
+### License
 This project is licensed under the GNU Affero General Public License v3.0. 
 https://www.gnu.org/licenses/agpl-3.0.html
