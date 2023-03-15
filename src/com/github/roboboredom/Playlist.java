@@ -127,8 +127,8 @@ public class Playlist
             currentNode = currentNode.getNextSong();
         }
 
-        playlistInfo += "Total Playlist Length (minutes): " + totalPlaylistTime + "\n";
-        playlistInfo += "Total Playlist Length (seconds): " + totalPlaylistTime / 60 + "\n\n";
+        playlistInfo += "Total Playlist Length (seconds): " + totalPlaylistTime + "\n";
+        playlistInfo += "Total Playlist Length (minutes): " + totalPlaylistTime / 60 + "\n\n";
         
         playlistInfo += "Total Number of Songs: " + m_size + "\n\n";
 

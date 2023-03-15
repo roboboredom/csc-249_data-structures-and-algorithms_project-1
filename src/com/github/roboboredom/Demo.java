@@ -67,6 +67,7 @@ public class Demo
                     System.out.println("Enter the song artist: "); newSong.setArtist(scanner.next());
                     System.out.println("Enter the song album: "); newSong.setAlbum(scanner.next());
                     System.out.println("Enter the song length (in seconds): "); newSong.setLength(Integer.parseInt(scanner.next())); 
+                    System.out.println();
                     
                     playlist.insertSongAfterCurrentlyPlayingSong(newSong, currentSong);
 
@@ -84,7 +85,7 @@ public class Demo
             {
                 if (playlist.getSize() != 0)
                 {
-                    System.out.println(playlist.toString());
+                    System.out.println("\n" + playlist.toString());
                 }
                 else
                 {
@@ -99,7 +100,7 @@ public class Demo
                     System.out.println("\tSong Name: " + currentSong.getName());
                     System.out.println("\tSong Artist: " + currentSong.getArtist());
                     System.out.println("\tSong Album: " + currentSong.getAlbum());
-                    System.out.println("\tSong Length (seconds): " + currentSong.getLength());
+                    System.out.println("\tSong Length (seconds): " + currentSong.getLength() + "\n");
                 }
                 else
                 {
